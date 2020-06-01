@@ -34,7 +34,7 @@ body {
     line-height: 1.6;
 }
 
-.page{
+.page {
     overflow-x: hidden;
 }
 
@@ -60,6 +60,9 @@ body {
     justify-content: center;
     width: 100%;
     height: 100vh;
+    min-height: 820px;
+    position: relative;
+
     background: url(../img/images/intro.jpg) center no-repeat;
     background-size: cover;
 }
@@ -103,7 +106,22 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding-top: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+header.active{
+
+}
+
+.header__fixed{
+    background-color: #eb8b8d;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translate3d(0,0,0);
+    -webkit-box-shadow: 0 3px 10px rgba(0,0,0,.2);
+    box-shadow: 0 3px 10px rgba(0,0,0,.2);
 }
 
 .header__inner {
@@ -169,6 +187,69 @@ nav {
     color: #fce38a;
 }
 
+/*Nav toggle*/
+.nav-toggle{
+    display: none;
+    font-size: 0;
+    color: transparent;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 24px;
+    z-index: 1;
+    width: 30px;
+    padding: 10px 0; 
+}
+
+.nav-toggle.active .nav-toggle__item{
+    background: none;
+}
+
+.nav-toggle.active .nav-toggle__item:before{
+    transform-origin: left bottom;
+    transform: rotate(45deg) translateX(-1px);
+}
+
+.nav-toggle.active .nav-toggle__item:after{
+    transform-origin: right top;
+    transform: rotate(-45deg) translateX(4px) translateY(-18px);
+}
+
+.nav-toggle__item{
+    display: block;
+    width: 100%;height: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    transition: background 0.2s ease;
+}
+
+.nav-toggle__item:before,
+.nav-toggle__item:after{
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    background-color: #fff;
+    left: 0;
+    z-index: 1;    
+    transition: transform 0.2s ease; 
+}
+
+.nav-toggle__item:before{
+    top: -8px;
+}
+
+.nav-toggle__item:after{
+bottom: -8px;
+}
 /*---------Button------*/
 .btn {
     display: inline-block;
@@ -744,6 +825,7 @@ nav {
 .works__img {
     display: block;
     max-width: 100%;
+    width: 100%;
     height: auto;
     transition: opacity 0.2s ease;
 }
@@ -983,7 +1065,7 @@ nav {
     margin: 0 -15px;
 }
 
-.footer__col{
+.footer__col {
     padding: 0 15px;
 }
 
@@ -1281,21 +1363,21 @@ nav {
     }
 
     /*Footer*/
-    .footer__col--first{
+    .footer__col--first {
         width: 100%;
     }
 
     .footer__col--second,
-    .footer__col--third{
+    .footer__col--third {
         width: 50%;
     }
 
     /*Instagram*/
-    .instagram{
+    .instagram {
         justify-content: flex-start;
     }
 
-    .instagram__item{
+    .instagram__item {
         width: auto;
         border-right: 1px solid white;
     }
@@ -1306,9 +1388,28 @@ nav {
     /*General*/
     nav {
         display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #eb8b8d;
+    }
+    
+    .nav__link{
+        display: block;
+        margin: 0;
+        padding: 8px 20px;
+    }
+    /*Header*/
+    .nav-toggle{
+        display: block;
+    }
+    /*Intro*/
+
+    .intro {
+        min-height: 400px;
     }
 
-    /*Intro*/
     .intro__title {
         font-size: 2.5rem;
     }
@@ -1418,14 +1519,14 @@ nav {
         margin-bottom: 30px;
     }
 
-    .blog__item:last-child{
+    .blog__item:last-child {
         margin-bottom: 0;
     }
 
-        /*Footer*/
+    /*Footer*/
 
     .footer__col--second,
-    .footer__col--third{
+    .footer__col--third {
         width: 100%;
     }
 }
@@ -1530,19 +1631,19 @@ nav {
     .clients__text:before {
         margin: 15px auto;
     }
-    
+
     /*Blogs*/
-    .blogs__img{
+    .blogs__img {
         width: 80px;
         height: 50px;
     }
 
-    .blogs__title{
+    .blogs__title {
         font-size: 0.625rem;
     }
 
     /*Subscribe*/
-    .subscribe{
+    .subscribe {
         -webkit-flex-wrap: wrap;
         -moz-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -1551,13 +1652,13 @@ nav {
         max-width: none;
     }
 
-    .subscribe__input{
+    .subscribe__input {
         margin-bottom: 10px;
         border-right: 1px solid #e7e7e7;
     }
 
     .subscribe__input,
-    .subscribe__button{
+    .subscribe__button {
         width: 100%;
     }
 }
